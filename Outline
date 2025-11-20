@@ -1,0 +1,38 @@
+Web Application for Book management
+
+Homepage:
+	Shows all books
+	Can add a new book with a button that takes the user to a new form-page
+		User is then sent back to the homepage
+		
+Book Element:
+	Should be able to edit with an "edit" button by the book
+		When "edit" is clicked, the user should be sent to a new form-page then sent back to home when "save" is clicked
+	"Delete" button to delete a book
+	
+Token Management
+	User authentication with JSON web tokens
+	Log-in page with username and password
+	Register new account
+	After login, back-end generates a token (in local storage or cookie) and sends back to front end
+		Use then for subsequent API request to the back end
+	Implement tocken validation in the back-end
+
+Quote Page:
+	Show a list of 5 quotes that I like
+	Should be able to add, delete, and edit the quotes
+	Button that switches between book view and quote view
+	
+Responsive Design Testing:
+	Website smoothly adapts to screen size changes Ex: Tablets, computers, phones
+	Navigation menus collapse into the responsive mobile menus or smaller screens
+	Fields and buttons are approritaly sized across viewing platforms
+	
+Bootstrap and Font Awesome
+	Use Bootstrap for the front end
+	Awesome icons to visual elements of application
+	Font Awesome icons are used and displayed correctly
+	
+Host application on a free platform such as Netlify or Vercel
+Send code repo by GitHub link
+		

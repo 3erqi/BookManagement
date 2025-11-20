@@ -1,0 +1,51 @@
+Checklist:
+
+Backend Foundation
+	.NET project setup
+	Models: Book, User, Quote
+	EF Core DbContext
+	SQLite database
+	BooksController: GET, POST, PUT, DELETE
+	Cors enabled for Angular
+API Works
+Can Create/edit/delete books via Swagger
+
+Authentication
+	Register new User
+	Login endpoint
+	Generate JWT token
+	Protect all CRUD endpoints with [authorize]
+Can register and login
+Books CRUD require a token
+
+Books CRUD (Front-end)
+	BookListComponent
+	BookFormComponent
+	BookService
+	Navigation and buttons
+Can add and delete book in UI
+Fully connected to backend
+
+Quotes page
+	QuotesController backend
+	QuoteListComponent
+	QuoteFormComponent
+	Navbar link to quotes page
+Working CRUD for quotes
+All functional requirments
+
+Responsive design
+	Bootstrap grid fixes
+	Mobile friendly navbar (collapse)
+App looks professional
+
+Testing and cleanup
+	Test on mobile view
+	Verify CRUD
+	Verify login/logout
+	Remove usused code
+	Add success and error messages
+	Comment code (maybe)
+	Final run-through of all pages
+Ready to submit
+All core operation are done
