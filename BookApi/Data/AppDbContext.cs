@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using BookApi.Modules;
+using BookApi.Models;
 
 namespace BookApi.Data
 {

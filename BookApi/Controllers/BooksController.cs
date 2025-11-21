@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BookApi.Data;
-using BookApi.Modules;
+using BookApi.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookApi.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class BooksController : ControllerBase

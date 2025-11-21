@@ -1,4 +1,4 @@
-namespace BookApi.Modules
+namespace BookApi.Models
 {
     public class Quote
     {
