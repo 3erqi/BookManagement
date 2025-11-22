@@ -24,7 +24,7 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<ActionResult<string>> Register(UserRegisterDto dto)
     {
-        if (await _context.Users.AnyAsync(u => u.Username == dto.Username))
+        if (await _context.Users.AnyAsync(u => u.Email == dto.Email))
             return BadRequest("Username already exists.");
 
         // Use BCrypt hash only
@@ -32,7 +32,7 @@ public class AuthController : ControllerBase
 
         var user = new User
         {
-            Username = dto.Username,
+            Email = dto.Email,
             PasswordHash = hash
         };
 
@@ -46,7 +46,7 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public async Task<ActionResult<string>> Login(UserLoginDto dto)
     {
-        var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == dto.Username);
+        var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == dto.Email);
 
         if (user == null)
             return BadRequest("User not found");

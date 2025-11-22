@@ -33,7 +33,7 @@ public class AuthService
     {
         var claims = new[]
         {
-            new Claim(ClaimTypes.Name, user.Username)
+            new Claim(ClaimTypes.Email, user.Email)
         };
 
         var key = new SymmetricSecurityKey(
