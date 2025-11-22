@@ -1,10 +1,9 @@
-using System.Security.Cryptography;
-using System.Text;
-using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using BookApi.DTOs;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
 using BookApi.Models;
+using BCrypt.Net;
 
 namespace BookApi.Services;
 
@@ -12,29 +11,25 @@ public class AuthService
 {
     private readonly IConfiguration _config;
 
-    public AuthService (IConfiguration config)
+    public AuthService(IConfiguration config)
     {
         _config = config;
     }
 
-    //Hash password
-    public void CreatePasswordHash(string password, out byte[] hash, out byte[] salt)
+    // Hash password (BCrypt includes the salt internally)
+    public string CreatePasswordHash(string password)
     {
-        using var hmac = new HMACSHA512();
-        salt = hmac.Key;
-        hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+        return BCrypt.Net.BCrypt.HashPassword(password);
     }
 
-    //Verify password
-    public bool VerifyPassword(string password, byte[] hash, byte[] salt)
+    // Verify password
+    public bool VerifyPassword(string password, string hash)
     {
-        using var hmac = new HMACSHA512(salt);
-        var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
-        return computedHash.SequenceEqual(hash);
+        return BCrypt.Net.BCrypt.Verify(password, hash);
     }
 
-    //Generate JWT Token
-    public String CreateToken(User user)
+    // Generate JWT Token
+    public string CreateToken(User user)
     {
         var claims = new[]
         {

@@ -169,3 +169,4 @@
 /home/evanbergqvist/Documents/BookTask/BookApi/bin/Debug/net10.0/Microsoft.IdentityModel.Tokens.dll
 /home/evanbergqvist/Documents/BookTask/BookApi/bin/Debug/net10.0/System.IdentityModel.Tokens.Jwt.dll
 /home/evanbergqvist/Documents/BookTask/BookApi/obj/Debug/net10.0/BookApi.sourcelink.json
+/home/evanbergqvist/Documents/BookTask/BookApi/bin/Debug/net10.0/BCrypt.Net-Next.dll

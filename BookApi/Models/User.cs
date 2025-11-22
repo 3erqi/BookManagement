@@ -4,7 +4,6 @@ namespace BookApi.Models
     {
         public int Id {get; set;}
         public required String Username {get; set;}
-        public required byte[] PasswordHash {get; set;}
-        public required byte[] PasswordSalt {get; set;}
+        public required String PasswordHash {get; set;}
     }
 }

@@ -20,22 +20,20 @@ public class AuthController : ControllerBase
         _authService = authService;
     }
 
-    //POST: api/auth/register
+    // POST: api/auth/register
     [HttpPost("register")]
     public async Task<ActionResult<string>> Register(UserRegisterDto dto)
     {
-        if(await _context.Users.AnyAsync(u => u.Username == dto.Username))
-        {
+        if (await _context.Users.AnyAsync(u => u.Username == dto.Username))
             return BadRequest("Username already exists.");
-        }
 
-        _authService.CreatePasswordHash(dto.Password, out var hash, out var salt);
+        // Use BCrypt hash only
+        var hash = _authService.CreatePasswordHash(dto.Password);
 
         var user = new User
         {
             Username = dto.Username,
-            PasswordHash = hash,
-            PasswordSalt = salt
+            PasswordHash = hash
         };
 
         _context.Users.Add(user);
@@ -44,21 +42,18 @@ public class AuthController : ControllerBase
         return Ok("User registered successfully.");
     }
 
-    //POST: api/auth/login
+    // POST: api/auth/login
     [HttpPost("login")]
     public async Task<ActionResult<string>> Login(UserLoginDto dto)
     {
         var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == dto.Username);
 
-        if(user == null)
-        {
+        if (user == null)
             return BadRequest("User not found");
-        }
 
-        if(!_authService.VerifyPassword(dto.Password, user.PasswordHash, user.PasswordSalt))
-        {
+        // Verify using BCrypt
+        if (!_authService.VerifyPassword(dto.Password, user.PasswordHash))
             return BadRequest("Incorrect password");
-        }
 
         var token = _authService.CreateToken(user);
 
