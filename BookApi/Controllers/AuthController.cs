@@ -51,7 +51,6 @@ public class AuthController : ControllerBase
         if (user == null)
             return BadRequest("User not found");
 
-        // Verify using BCrypt
         if (!_authService.VerifyPassword(dto.Password, user.PasswordHash))
             return BadRequest("Incorrect password");
 

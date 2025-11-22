@@ -16,7 +16,7 @@ namespace BookApi.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.0");
 
-            modelBuilder.Entity("BookApi.Modules.Book", b =>
+            modelBuilder.Entity("BookApi.Models.Book", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -38,7 +38,7 @@ namespace BookApi.Migrations
                     b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("BookApi.Modules.Quote", b =>
+            modelBuilder.Entity("BookApi.Models.Quote", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -57,17 +57,17 @@ namespace BookApi.Migrations
                     b.ToTable("Quotes");
                 });
 
-            modelBuilder.Entity("BookApi.Modules.User", b =>
+            modelBuilder.Entity("BookApi.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("PasswordHash")
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Username")
+                    b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
